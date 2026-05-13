@@ -9,19 +9,34 @@
     <style>
         body { font-family: 'Inter', sans-serif; background-color: #f5f5f0; color: #2D3E32; }
         .font-serif { font-family: 'Cormorant Garamond', serif; }
-        .eco-gradient { background: linear-gradient(135deg, #f5f5f0 0%, #e8e8df 100%); }
+        .video-container { 
+            position: relative; 
+            padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
+            height: 0; 
+            overflow: hidden; 
+            border-radius: 1.5rem;
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+        }
+        .video-container video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
     </style>
 </head>
 <body class="min-h-screen">
 
     <!-- Hero Bölümü -->
     <header class="h-screen flex flex-col items-center justify-center text-center px-6">
-        <span class="uppercase tracking-[0.3em] text-xs text-olive-600 mb-4 opacity-70">Doğaya Dönüş</span>
+        <span class="uppercase tracking-[0.3em] text-xs text-olive-600 mb-4 opacity-70">Back to nature</span>
         <h1 class="text-7xl md:text-9xl font-serif font-light tracking-tighter leading-none mb-8">
             ResinRoot
         </h1>
         <div class="h-px w-24 bg-current opacity-20 mb-12"></div>
-        <a href="#about" class="text-xs uppercase tracking-widest opacity-40 hover:opacity-100 transition-opacity">Aşağı Kaydır</a>
+        <a href="#about" class="text-xs uppercase tracking-widest opacity-40 hover:opacity-100 transition-opacity">Scroll Down</a>
     </header>
 
     <!-- İçerik Bölümü -->
@@ -41,24 +56,17 @@
                     However, our products in this project —100% cotton fabrics coated with natural beeswax and pine resin, and a wooden box lined with this fabric that also serves as a storage container— are truly eco-friendly! 
                     You can use our beeswax pouches and natural wooden storage container for years! 
                 </p>
-                <p class="text-center font-medium">To learn more, you can watch the video at the link!</p>
+                <p class="text-center font-medium">To learn more, you can watch our story below:</p>
             </div>
 
-             <!-- Video ve Karekod -->
-            <div class="flex flex-col md:flex-row items-center justify-center gap-12 py-12 bg-white/50 rounded-3xl p-8 border border-gray-100 shadow-sm">
-                <div class="text-center">
-                    <p class="text-xs uppercase tracking-widest text-gray-400 mb-4 font-semibold">Video Linki</p>
-                    <a href="https://youtube.com" target="_blank" class="text-yellow-700 hover:text-yellow-800 underline underline-offset-4 text-lg">
-                        youtu.be/ResinRootProject
-                    </a>
-                </div>
-                <div class="w-px h-12 bg-gray-200 hidden md:block"></div>
-                <div class="text-center">
-                    <p class="text-xs uppercase tracking-widest text-gray-400 mb-4 font-semibold">Karekod</p>
-                    <div class="bg-white p-4 rounded-xl shadow-md inline-block">
-                        <!-- Basit bir Karekod temsili -->
-                        <div class="w-32 h-32 bg-gray-200 flex items-center justify-center text-gray-400 text-[10px]">QR CODE</div>
-                    </div>
+            <!-- Video Bölümü -->
+            <div class="py-12">
+                <div class="video-container border border-gray-200">
+                    <!-- Videonuzu 'static/video.mp4' olarak kaydedin -->
+                    <video controls poster="/static/poster.jpg">
+                        <source src="/static/video.mp4" type="video/mp4">
+                        Tarayıcınız video oynatmayı desteklemiyor.
+                    </video>
                 </div>
             </div>
 
@@ -70,7 +78,12 @@
                         <h3 class="text-5xl md:text-7xl font-serif text-gray-800 mt-4">
                             Day <span class="text-yellow-700">{{ days_elapsed }}</span> of using the ResinRoot
                         </h3>
-                        <p class="text-gray-500 italic lowercase tracking-wider">Thank you for your support of nature.</p>
+                        <p class="text-gray-500 italic lowercase tracking-wider mb-8">Thank you for your support of nature.</p>
+                        
+                        <button onclick="if(confirm('Sıfırlamak istediğinize emin misiniz?')) window.location.href='/reset'" 
+                                class="text-[10px] uppercase tracking-[0.2em] text-gray-400 hover:text-red-800 transition-colors">
+                            Reset Process
+                        </button>
                     </div>
                 {% else %}
                     <div class="space-y-8">
@@ -85,8 +98,11 @@
     </main>
 
     <footer class="py-12 border-t border-gray-200 text-center text-[10px] uppercase tracking-[0.4em] text-gray-400">
-        &copy; 2026 ResinRoot Sustainable Upcycling project
+        &copy; 2026 ResinRoot Sustainable Upcycling project.
     </footer>
 
+    <footer class="py-12 border-t border-gray-200 text-center text-[10px] uppercase tracking-[0.4em] text-gray-400">
+        Project made by; Ebrar Dinç.
+    </footer>
 </body>
 </html>
