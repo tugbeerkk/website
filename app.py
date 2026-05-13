@@ -31,6 +31,13 @@ def start():
     response.set_cookie('start_date', now, max_age=60*60*24*365*10)
     return response
 
+@app.route('/reset')
+def reset():
+    # Cookie'yi silerek sayacı sıfırla
+    response = make_response("<script>window.location.href='/';</script>")
+    response.delete_cookie('start_date')
+    return response
+
 if __name__ == '__main__':
     # AI Studio için 3000 portunda çalışması gerekir
     # Yerel bilgisayarında 'flask run' veya 'python app.py' ile çalıştırabilirsin
